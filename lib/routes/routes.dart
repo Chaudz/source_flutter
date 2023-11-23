@@ -1,7 +1,7 @@
-import 'package:git/pages/homepage.dart';
-import 'package:git/pages/secondPage.dart';
+import 'package:git/pages/detail_product.dart';
+import 'package:git/pages/products_page.dart';
+
 
 var routes = {
-  '/': (context) => const HomePage(),
-  '/secondpage': (context) => const SecondPage(),
+  '/': (context) => const ProductPage(),
 };
