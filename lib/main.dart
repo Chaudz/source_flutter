@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:git/models/student.dart';
 import 'package:git/routes/routes.dart';
 
 void main() {
