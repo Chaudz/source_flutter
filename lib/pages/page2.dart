@@ -16,7 +16,10 @@ class Page2 extends StatelessWidget {
                       // Điều này đảm bảo rằng tất cả các màn hình hiện tại sẽ bị loại bỏ,
                       // và chỉ có màn hình mới là /page3 sẽ được giữ lại.
                       // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const Page3()), (route) => false)
-                      Navigator.pushNamedAndRemoveUntil(context, '/page3', (route) => false)
+                      //dòng code này đang được sử dụng để điều hướng
+                      // đến màn hình có tên là '/page3'
+                      // và loại bỏ tất cả các màn hình khác trên ngăn xếp màn hình cho đến khi gặp màn hình có tên là '/page1'.
+                      Navigator.pushNamedAndRemoveUntil(context, '/page3', ModalRoute.withName('/page1'))
                     },
                     child: Text('page3')
                 ),

@@ -20,9 +20,9 @@ class Page3 extends StatelessWidget {
                 ),
                 ElevatedButton(
                     onPressed: ()=>{
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Page4()))
+                      Navigator.of(context).pushNamedAndRemoveUntil('/page2', ModalRoute.withName('/page2'))
                     },
-                    child: Text('page4')
+                    child: Text('page2')
                 )
               ],
             )
