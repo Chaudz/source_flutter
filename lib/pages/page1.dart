@@ -14,7 +14,7 @@ class Page1 extends StatelessWidget {
                     onPressed: ()=>{
                       Navigator.pushNamed(context, '/page2')
                     },
-                    child: Text('page2')
+                    child: Text('page 2')
                 ),
                 ElevatedButton(
                     onPressed: ()=>{

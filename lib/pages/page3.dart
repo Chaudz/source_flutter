@@ -14,9 +14,9 @@ class Page3 extends StatelessWidget {
               children: [
                 ElevatedButton(
                     onPressed: ()=>{
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=> const HomePage()), (route) => false)
+                       Navigator.popUntil(context,ModalRoute.withName('/page2'))
                     },
-                    child: Text('homepage')
+                    child: Text('pop until to page1')
                 ),
                 ElevatedButton(
                     onPressed: ()=>{

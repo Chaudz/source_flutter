@@ -19,9 +19,13 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: ()=>{
-
+                  if(Navigator.canPop(context)){
+                    Navigator.maybePop(context)
+                  }else{
+                    showDialog(context: context, builder: (context)=> AlertDialog(content: Text('can not pop'),))
+                  }
                 },
-                child: Text('page1')
+                child: Text('pop')
             )
           ],
         )
