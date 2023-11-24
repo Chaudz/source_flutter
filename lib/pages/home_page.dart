@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:git/models/post_model.dart';
-import 'package:git/services/api_service.dart';
+import 'package:git/services/shared_preferences_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,63 +10,55 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<PostModel>? _posts = null;
+  List<String>? infoUser = [];
 
   @override
   void initState(){
     super.initState();
-    _getData();
+    _setInfoUser();
   }
 
-  void _getData() async{
-    print("đang lấy");
-    _posts = await ApiService().getPosts();
-
-    if (_posts != null) {
-      // Kiểm tra _posts không phải null và không phải là danh sách rỗng
-      print(_posts![0].getTitle());
-    }
-  }
-
-  void _postData() async{
-    print("đang tạo");
-    _posts = await ApiService().createPost(PostModel(111, 22, "dsaf", "fdsaf"));
-  }
-
-  void _deleteData() async{
-    print("đang xoá");
-    _posts = await ApiService().deletePost(1);
+  void _setInfoUser() async {
+    List<String>? value = await SharedPreferencesHelper.getInfo("userName");
+    setState(() {
+      infoUser = value;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Hello my home")),
-      body: _posts == null ?
-          Center(child: CircularProgressIndicator(),):
-          Center(
-            child: Column(
-              children: [
-               Expanded(child:  ListView.builder(
-                 itemCount: _posts!.length,
-                 itemBuilder: (context,i) => ListTile(
-                   title: Text("${_posts![i].getTitle()}"),
-                   trailing: Text("id ${_posts![i].getId()}"),
-                 ),
-               ),),
-                ElevatedButton(
-                    onPressed: ()=>{
-                      _postData()
-                    },
-                    child: Text("create")),
-                ElevatedButton(
-                    onPressed: ()=>{
-                      _deleteData()
-                    },
-                    child: Text("delete"))
-              ],
+      body: Center(
+        child: Column(
+          children: [
+            Text("Name: ${infoUser ?? "null"}"),
+            // Text("Age: ${infoUser!.length != 0 ?infoUser![1]:"null" }"),
+            // Text("Gender: ${infoUser!.length != 0 ?infoUser![2]:"null" }"),
+            SizedBox(
+              height: 10,
             ),
-          )
+            ElevatedButton(
+                onPressed:  () async  {
+                  await SharedPreferencesHelper.setInfoList(["bui van chau", "20", "nam"], 'userName');
+                },
+                child: Text('Save data')),
+            ElevatedButton(
+                onPressed: () async {
+                  List<String>? value = await SharedPreferencesHelper.getInfo('userName');
+                  setState((){
+                    infoUser = value;
+                  });
+                },
+                child: Text('Load data')),
+            ElevatedButton(
+                onPressed: () async {
+                 SharedPreferencesHelper.clearInfo('userName');
+                },
+                child: Text('Clean data'))
+          ],
+        )
+      )
     );
   }
 }
