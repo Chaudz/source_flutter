@@ -33,8 +33,6 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Text("Name: ${infoUser ?? "null"}"),
-            // Text("Age: ${infoUser!.length != 0 ?infoUser![1]:"null" }"),
-            // Text("Gender: ${infoUser!.length != 0 ?infoUser![2]:"null" }"),
             SizedBox(
               height: 10,
             ),
