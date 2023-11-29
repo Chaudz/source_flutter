@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991278076368",
+    "project_id": "baby-d1667",
+    "storage_bucket": "baby-d1667.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991278076368:android:8e56ef0014c7aa4380e9d5",
+        "android_client_info": {
+          "package_name": "com.example.git"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl5QaBDPmdtJpVIaJY2Q0s59P7KmuNefI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
